@@ -14,6 +14,7 @@ enum APIError: Error {
     case noData
     case forbidden
     case serverError
+    case invalidData
     
     var description: String {
         switch self {
@@ -24,6 +25,8 @@ enum APIError: Error {
         case .forbidden :
             return "에러가 발생했습니다. 다시 시도해주세요."
         case .serverError :
+            return "에러가 발생했습니다. 다시 시도해주세요."
+        case .invalidData:
             return "에러가 발생했습니다. 다시 시도해주세요."
         }
     }
