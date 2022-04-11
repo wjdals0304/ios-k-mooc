@@ -7,7 +7,28 @@
 
 import Foundation
 
+struct LectureListResponseModel: Codable {
+    let pagination : Pagination
+    let results : [LectureResponseModel]
+}
+
+struct Pagination: Codable {
+    let count: Int
+    let previous: String?
+    let numPages: Int
+    let next: String
+    
+    enum CodingKeys: String, CodingKey {
+        case count
+        case previous
+        case numPages = "num_pages"
+        case next
+    }
+}
+
+
 struct LectureList: Codable {
+    
     let count: Int
     let numPages: Int
     let previous: String
