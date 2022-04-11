@@ -13,7 +13,7 @@ enum LectureUrlEndPoint {
 }
 
 extension LectureUrlEndPoint {
-    var url: URL {
+    var url: String {
         switch self {
         case .courseList(serviceKey: let serviceKey, mobile: let mobile) :
             return .makeEndpoint("/courseList?serviceKey=\(serviceKey)&Mobile=\(mobile)")
@@ -23,9 +23,9 @@ extension LectureUrlEndPoint {
     }
 }
 
-extension URL {
+extension String {
     static let baseURL = "http://apis.data.go.kr/B552881/kmooc"
-    static func makeEndpoint(_ endpoint: String) -> URL {
-        return URL(string: baseURL + endpoint)!
+    static func makeEndpoint(_ endpoint: String) -> String {
+        return String(baseURL + endpoint)
     }
 }
