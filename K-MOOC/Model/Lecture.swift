@@ -8,6 +8,105 @@
 import Foundation
 
 
+// MARK: - Result
+struct LectureResponseModel: Codable {
+    let blocksURL: String
+    let effort: String
+    let end, enrollmentStart, enrollmentEnd: Date
+    let id: String
+    let media: Media
+    let name, number: String
+    let org: String
+    let shortDescription: String
+    let start: Date
+    let startDisplay: String
+    let startType: String
+    let pacing: String
+    let mobileAvailable, hidden, invitationOnly: Bool
+    let teachers, classfy, middleClassfy: String
+    let classfyPlus: String
+    let coursePeriod: String
+    let level, passingGrade: String
+    let auditYn, fourthIndustryYn, homeCourseYn: String
+    let homeCourseStep: String
+    let ribbonYn, jobEduYn: String
+    let linguistics: String
+    let created, modified: Date
+    let aiSECYn, basicScienceSECYn: String
+    let orgName: String
+    let classfyName: String
+    let middleClassfyName: String?
+    let languageName: String
+    let effortTime, videoTime, week, learningTime: String
+    let previewVideo: String
+    let courseID: String
+
+    enum CodingKeys: String, CodingKey {
+        case blocksURL = "blocks_url"
+        case effort, end
+        case enrollmentStart = "enrollment_start"
+        case enrollmentEnd = "enrollment_end"
+        case id, media, name, number, org
+        case shortDescription = "short_description"
+        case start
+        case startDisplay = "start_display"
+        case startType = "start_type"
+        case pacing
+        case mobileAvailable = "mobile_available"
+        case hidden
+        case invitationOnly = "invitation_only"
+        case teachers, classfy
+        case middleClassfy = "middle_classfy"
+        case classfyPlus = "classfy_plus"
+        case coursePeriod = "course_period"
+        case level
+        case passingGrade = "passing_grade"
+        case auditYn = "audit_yn"
+        case fourthIndustryYn = "fourth_industry_yn"
+        case homeCourseYn = "home_course_yn"
+        case homeCourseStep = "home_course_step"
+        case ribbonYn = "ribbon_yn"
+        case jobEduYn = "job_edu_yn"
+        case linguistics, created, modified
+        case aiSECYn = "ai_sec_yn"
+        case basicScienceSECYn = "basic_science_sec_yn"
+        case orgName = "org_name"
+        case classfyName = "classfy_name"
+        case middleClassfyName = "middle_classfy_name"
+        case languageName = "language_name"
+        case effortTime = "effort_time"
+        case videoTime = "video_time"
+        case week
+        case learningTime = "learning_time"
+        case previewVideo = "preview_video"
+        case courseID = "course_id"
+    }
+}
+
+
+// MARK: - Media
+struct Media: Codable {
+    let courseImage, courseVideo: Course
+    let image: Image
+
+    enum CodingKeys: String, CodingKey {
+        case courseImage = "course_image"
+        case courseVideo = "course_video"
+        case image
+    }
+}
+
+// MARK: - Course
+struct Course: Codable {
+    let uri: String?
+}
+
+// MARK: - Image
+struct Image: Codable {
+    let raw, small, large: String
+}
+
+
 struct Lecture: Codable {
     let id: String                 // 아이디
     let number: String             // 강좌번호
