@@ -1,0 +1,16 @@
+identifier_name:
+  allowed_symbols: ["_"]
+
+disabled_rules:
+- line_length
+- trailing_whitespace
+- type_body_length
+- cyclomatic_complexity
+- force_cast
+
+excluded:
+- Libraries
+- K-MOOC/AppDelegate.swift
+- K-MOOC/SceneDelegate.swift
+- K-MOOCTests
+- K-MOOCUITests
