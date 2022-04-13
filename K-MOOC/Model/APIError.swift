@@ -7,26 +7,17 @@
 
 import Foundation
 
-
 enum APIError: Error {
-    
+
     case failed
     case noData
     case forbidden
     case serverError
     case invalidData
-    
+
     var description: String {
         switch self {
-        case .failed :
-            return "에러가 발생했습니다. 다시 시도해주세요."
-        case .noData :
-            return "에러가 발생했습니다. 다시 시도해주세요."
-        case .forbidden :
-            return "에러가 발생했습니다. 다시 시도해주세요."
-        case .serverError :
-            return "에러가 발생했습니다. 다시 시도해주세요."
-        case .invalidData:
+        case .failed, .noData, .forbidden, .serverError, .invalidData:
             return "에러가 발생했습니다. 다시 시도해주세요."
         }
     }
