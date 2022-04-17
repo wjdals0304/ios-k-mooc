@@ -27,19 +27,20 @@ struct LectureResponseModel: Codable {
     let classfyPlus: String
     let coursePeriod: String
     let level, passingGrade: String
-    let auditYn, fourthIndustryYn, homeCourseYn: String
-    let homeCourseStep: String
+    let auditYn, fourthIndustryYn, homeCourseYn: String?
+    let homeCourseStep: String?
     let ribbonYn, jobEduYn: String
     let linguistics: String
     let created, modified: Date
-    let aiSECYn, basicScienceSECYn: String
+    let aiSECYn, basicScienceSECYn: String?
     let orgName: String
     let classfyName: String
     let middleClassfyName: String?
     let languageName: String
     let effortTime, videoTime, week, learningTime: String
-    let previewVideo: String
+    let previewVideo: String?
     let courseID: String
+    let overview: String?
 
     enum CodingKeys: String, CodingKey {
         case blocksURL = "blocks_url"
@@ -80,6 +81,7 @@ struct LectureResponseModel: Codable {
         case learningTime = "learning_time"
         case previewVideo = "preview_video"
         case courseID = "course_id"
+        case overview
     }
 }
 
