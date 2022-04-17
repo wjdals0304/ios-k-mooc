@@ -22,7 +22,7 @@ final class KmoocDetailView: UIView {
         return stackView
     }()
     
-    private let lectureImage = UIImageView()
+    let lectureImage = UIImageView()
     
     private let numberEmptyView: UIView = {
         let view = UIView()
@@ -65,7 +65,7 @@ final class KmoocDetailView: UIView {
         return label
     }()
     
-    private let lectureEmptyNumberLabel = UILabel()
+    let lectureEmptyNumberLabel = UILabel()
     
     private let lectureTypeStackView: UIStackView = {
         let stackView = UIStackView()
@@ -82,7 +82,7 @@ final class KmoocDetailView: UIView {
         return label
     }()
     
-    private let lectureEmptyTypeLabel = UILabel()
+    let lectureEmptyTypeLabel = UILabel()
 
     private let lectureOrgStackView: UIStackView = {
         let stackView = UIStackView()
@@ -99,7 +99,7 @@ final class KmoocDetailView: UIView {
         return label
     }()
     
-    private let lectureEmptyOrgLabel = UILabel()
+    let lectureEmptyOrgLabel = UILabel()
     
     private let lectureTeacherStackView: UIStackView = {
         let stackView = UIStackView()
@@ -116,7 +116,7 @@ final class KmoocDetailView: UIView {
         return label
     }()
     
-    private let lectureTeacherEmptyLabel = UILabel()
+    let lectureTeacherEmptyLabel = UILabel()
     
     private let lectureDueStackView: UIStackView = {
         let stackView = UIStackView()
@@ -133,7 +133,7 @@ final class KmoocDetailView: UIView {
         return label
     }()
     
-    private let lectureDueEmptyLabel = UILabel()
+    let lectureDueEmptyLabel = UILabel()
     
     private let lineView: UIView = {
         let view = UIView()
@@ -141,7 +141,7 @@ final class KmoocDetailView: UIView {
         return view
     }()
     
-    private let webView = WKWebView()
+    let webView = WKWebView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -199,7 +199,7 @@ final class KmoocDetailView: UIView {
         
         [
             dueEmptyView,
-            lectureDueEmptyLabel,
+            lectureDueLabel,
             lectureDueEmptyLabel
         ].forEach { lectureDueStackView.addArrangedSubview($0) }
         
