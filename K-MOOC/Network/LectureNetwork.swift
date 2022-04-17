@@ -21,6 +21,12 @@ final class LectureNetwork {
 
         return lectureList
     }
+    
+    private func parseLecture(res: LectureResponseModel) -> Lecture {
+        print(res)
+        return  Lecture(id: res.id, number: res.number, name: res.name, classfyName: res.classfyName, middleClassfyName: res.middleClassfyName ?? "", courseImage: res.media.courseImage.uri ?? "", courseImageLarge: res.media.image.large, shortDescription: res.shortDescription, orgName: res.orgName, start: res.start, end: res.end, teachers: res.teachers, overview: res.overview)
+        
+    }
 
     func getLectureList(completion: @escaping(Result<LectureList, APIError>) -> Void) {
 
@@ -119,6 +125,59 @@ final class LectureNetwork {
                 completion(.failure(.failed))
             }
         }
+    }
+    
+    
+    func detailLecture(courseId:String,completion: @escaping(Result<Lecture, APIError>) -> Void ) {
+        
+        let url = LectureUrlEndPoint.courseDetail(serviceKey: serviceKey, courseId: courseId).url
+        
+        let dataRequest = AF.request(url, method: .get)
+
+        dataRequest.responseData { response in
+
+            switch response.result {
+
+            case .success:
+
+                guard let statusCode = response.response?.statusCode else {
+                    completion(.failure(.failed))
+                    return
+                }
+
+                guard let value = response.value else {
+                    completion(.failure(.noData))
+                    return
+                }
+
+                switch statusCode {
+
+                case 200 :
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+
+                    guard let data = try? decoder.decode(LectureResponseModel.self, from: value )
+                    else {
+                        completion(.failure(.invalidData))
+                        return
+                    }
+
+                    let lectureList = self.parseLecture(res: data)
+
+                    completion(.success(lectureList))
+                case 403 :
+                    completion(.failure(.forbidden))
+                case 500 :
+                    completion(.failure(.serverError))
+                default :
+                    completion(.failure(.failed))
+                }
+
+            case .failure:
+                completion(.failure(.failed))
+            }
+        }
+        
     }
 
 }
