@@ -23,7 +23,6 @@ final class LectureNetwork {
     }
     
     private func parseLecture(res: LectureResponseModel) -> Lecture {
-        print(res)
         return  Lecture(id: res.id, number: res.number, name: res.name, classfyName: res.classfyName, middleClassfyName: res.middleClassfyName ?? "", courseImage: res.media.courseImage.uri ?? "", courseImageLarge: res.media.image.large, shortDescription: res.shortDescription, orgName: res.orgName, start: res.start, end: res.end, teachers: res.teachers, overview: res.overview)
         
     }
