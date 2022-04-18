@@ -119,16 +119,31 @@ extension KmoocListViewController: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let lecture = kmoocListViewModel.lecture(at: indexPath.row)
-//
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let lecture = kmoocListViewModel.lecture(at: indexPath.row)
+        let vc = KmoocDetailViewController()
+        vc.detailViewModel.lectureId = lecture.id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY > contentHeight - scrollView.frame.height {
+            kmoocListViewModel.next { [weak self] message in
+                guard let message = message else {
+                    return
+                }
+                self?.view.makeToast(message)
+            }
+        }
+    }
 
 }
 
