@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import Kingfisher
 
 final class KmoocDetailViewController: UIViewController {
     
@@ -39,6 +40,9 @@ final class KmoocDetailViewController: UIViewController {
         
         detailViewModel.lectureUpdated = { [weak self] lecture in
             self?.title = lecture.name
+            
+            let url = URL(string: lecture.courseImageLarge)
+            self?.detailView.lectureImage.kf.setImage(with:url)
             
             self?.detailView.lectureEmptyNumberLabel.text = lecture.number
             
